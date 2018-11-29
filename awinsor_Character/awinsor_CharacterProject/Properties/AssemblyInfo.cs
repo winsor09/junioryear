@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("awinsor_Character")]
+[assembly: AssemblyTitle("awinsor_CharacterProject")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("awinsor_Character")]
+[assembly: AssemblyProduct("awinsor_CharacterProject")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("db9fbfea-50f1-427a-b9c6-249ad8b90661")]
+[assembly: Guid("d5db0c16-48e7-4164-890d-43284aaee0a0")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DB9FBFEA-50F1-427A-B9C6-249AD8B90661}</ProjectGuid>
+    <ProjectGuid>{D5DB0C16-48E7-4164-890D-43284AAEE0A0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>awinsor_Character</RootNamespace>
-    <AssemblyName>awinsor_Character</AssemblyName>
+    <RootNamespace>awinsor_CharacterProject</RootNamespace>
+    <AssemblyName>awinsor_CharacterProject</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
