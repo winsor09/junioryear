@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     float timer = 0f;
+    float time2goal = 6000f;
     static GameManager instance;
 
     public static GameManager Instance

@@ -29,7 +29,7 @@ public class Character : MonoBehaviour {
 	void Update () {
 
         velocity = rBody.velocity;
-        if(Input.GetKeyDown(KeyCode.W) /*&& jumpnum < 2*/)
+        if(Input.GetKeyDown(KeyCode.W) && jumpnum < 2)
         {
 
             velocity = new Vector3(velocity.x, jump);
