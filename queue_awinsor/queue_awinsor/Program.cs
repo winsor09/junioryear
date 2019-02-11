@@ -10,10 +10,26 @@ namespace queue_awinsor
     {
         static void Main(string[] args)
         {
+
+
+            Console.WriteLine();
+            Random rand = new Random();
+            QueueGeneric<Currencies> currencies = new QueueGeneric<Currencies>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                currencies.EnQueue(new Currencies(rand.Next(0, 100), rand.Next(0, 100), rand.Next(0, 100)));
+
+            }
+
+            return;
+
+
             int val = 0;
             int menu = 0;
-            Queue myqueue = new Queue();
-
+            QueueGeneric<float> myqueuef = new QueueGeneric<float>();
+            QueueGeneric<string> myqueues = new QueueGeneric<string>();
+            QueueGeneric<int> myqueuei = new QueueGeneric<int>();
 
             while (menu != 5)
             {
@@ -32,7 +48,7 @@ namespace queue_awinsor
                 switch (menu)
                 {
                     case 1:
-                        int myint = myqueue.DeQueue();
+                        int myint = myqueuei.DeQueue();
                         Console.WriteLine(myint);
                         if (myint == -1)
                         {
@@ -46,7 +62,7 @@ namespace queue_awinsor
 
                         Console.Write("Please choose a number to enqueue to the queue: ");
                         val = int.Parse(Console.ReadLine());
-                        myqueue.EnQueue(val);
+                        myqueuei.EnQueue(val);
 
                         Console.ReadLine();
 
@@ -54,7 +70,7 @@ namespace queue_awinsor
 
                     case 3:
 
-                        Console.WriteLine(myqueue.Peek());
+                        Console.WriteLine(myqueuei.Peek());
 
                         Console.ReadLine();
 
@@ -62,7 +78,7 @@ namespace queue_awinsor
 
                     case 4:
 
-                        myqueue.Print();
+                        myqueuei.Print();
 
                         Console.ReadLine();
 

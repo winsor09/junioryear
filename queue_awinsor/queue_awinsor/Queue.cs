@@ -6,36 +6,44 @@ using System.Threading.Tasks;
 
 namespace queue_awinsor
 {
-    class Queue
+    class QueueGeneric<T> : IEmptyable, IPrintable, ICountable where T : IComparable
     {
 
-        List<int> holder = new List<int>();
+        List<T> holder = new List<T>();
 
-        public Queue()
+        public QueueGeneric(){}
+
+        public void Count()
         {
+            throw new NotImplementedException();
+        }
 
+        public void Empty()
+        {
+            throw new NotImplementedException();
         }
 
         //DeQueue
-        public int DeQueue()
+        public T DeQueue()
         {
 
             if (holder.Count >= 1)
             {
-                int dumdum = holder[holder.Count - 1];
+                T dumdum = holder[holder.Count - 1];
 
                 holder.RemoveAt(holder.Count - 1);
                 return dumdum;
             }
 
             else
-                return -1;
+                return default(T);
 
 
         }
 
+
         //EnQueue
-        public void EnQueue(int val)
+        public void EnQueue(T val)
         {
 
             holder.Insert(0, val);
@@ -43,17 +51,17 @@ namespace queue_awinsor
         }
 
         //peek
-        public int Peek()
+        public T Peek()
         {
             if (holder.Count > 1)
             {
-                int dumdum = holder[holder.Count - 1];
+                T dumdum = holder[holder.Count - 1];
 
                 return dumdum;
             }
 
             else
-                return 0000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+                return default(T);
         }
 
         //print
