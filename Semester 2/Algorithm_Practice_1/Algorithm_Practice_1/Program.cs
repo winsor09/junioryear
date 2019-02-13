@@ -170,25 +170,65 @@ namespace Algorithm_Practice_1
                     break;
 
                 case 3:
-                    string text3 = AppDomain.CurrentDomain.BaseDirectory + @"Prob03.in.txt";
+                    //string text3 = AppDomain.CurrentDomain.BaseDirectory + @"Prob04.in.txt";
 
 
-                    List<List<string>> file3 = new List<List<string>>();
-                    using (StreamReader sr = new StreamReader(text3))
+                    //List<List<string>> file3 = new List<List<string>>();
+                    //using (StreamReader sr = new StreamReader(text3))
+                    //{
+
+                    //    string line;
+                    //    while ((line = sr.ReadLine()) != null)
+                    //    {
+                    //        file3.Add(new List<string>());
+                    //        string[] Array3 = line.Split('-');
+                    //        for (int i = 0; i < Array3.Length; i++)
+                    //        {
+                    //            file3[file3.Count - 1].Add(Array3[i]);
+                    //        }
+
+                    //    }
+                    //}
+
+
+
+
+                    string text4 = AppDomain.CurrentDomain.BaseDirectory + @"Prob04.in.txt";
+
+
+                    List<string> file4 = new List<string>();
+                    using (StreamReader sr = new StreamReader(text4))
                     {
 
                         string line;
                         while ((line = sr.ReadLine()) != null)
                         {
-                            file3.Add(new List<string>());
-                            string[] Array3 = line.Split('-');
-                            for (int i = 0; i < Array3.Length; i++)
-                            {
-                                file3[file3.Count - 1].Add(Array3[i]);
-                            }
+
+                            file4.Add(line);
 
                         }
                     }
+
+                   int temp = 0;
+                   int ttl2 = 0;
+
+                    for (int i = 0; i < file4.Count; i++)
+                    {
+                        temp = int.Parse(file4[i]);
+                        ttl2 = temp;
+                        temp -= 1;
+                        
+
+                        while(temp > 0)
+                        {
+                            ttl2 = (ttl2 * temp);
+                            temp--;
+                        }
+
+                        Console.WriteLine(ttl2);
+                    }
+
+                    Console.ReadLine();
 
                     break;
             }
