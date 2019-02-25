@@ -91,10 +91,11 @@ namespace Sudoku
             }
 
 
-
+            
 
             //Check all rows in the board, make sure they contain ONLY values 1-9. No duplicates, no exclusions
 
+            temp.Clear();
 
             for (int y = 0; y < 9; y++)
             {
@@ -115,7 +116,8 @@ namespace Sudoku
                 }
             }
             //Check all boxes in the board, make sure they contain ONLY values 1-9. No duplicates, no exclusions
-
+            ////////////////wrong///////////////////////
+            temp.Clear();
 
             for (int y = 0; y < 9; y++)
             {
@@ -221,7 +223,7 @@ namespace Sudoku
         public bool PlaceValue(int val, int row, int col)
         {
             //if any argument is outside of the range 0-8, return false
-            if (val < 0 || val > 8 || row < 0 || row > 8 || col < 0 || col > 8)
+            if (val < 1 || val > 9 || row < 0 || row > 8 || col < 0 || col > 8)
                 return false;
 
             mrr = row;
