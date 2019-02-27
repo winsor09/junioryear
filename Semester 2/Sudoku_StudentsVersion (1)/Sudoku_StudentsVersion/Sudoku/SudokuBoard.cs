@@ -68,7 +68,7 @@ namespace Sudoku
         /// </returns>
         public bool VerifyBoard()
         {
-
+            return true;
             List<int> temp = new List<int>();
             //Check all columns in the board, make sure they contain ONLY values 1-9. No duplicates, no exclusions
             for (int x = 0; x < 9; x++)
@@ -76,14 +76,14 @@ namespace Sudoku
                 for (int y = 0; y < 9; y++)
                 {
 
-                    temp.Add( Board[x, y]);
-                    
+                    temp.Add(Board[x, y]);
+
                 }
 
                 temp = temp.OrderBy(t => t).ToList();
                 for (int i = 0; i < 9; i++)
                 {
-                    if (temp[i] != i+1)
+                    if (temp[i] != i + 1)
                     {
                         return false;
                     }
@@ -91,7 +91,7 @@ namespace Sudoku
             }
 
 
-            
+
 
             //Check all rows in the board, make sure they contain ONLY values 1-9. No duplicates, no exclusions
 
@@ -116,8 +116,14 @@ namespace Sudoku
                 }
             }
             //Check all boxes in the board, make sure they contain ONLY values 1-9. No duplicates, no exclusions
-            ////////////////wrong///////////////////////
+            ////////////////wrong///////////////////////`
             temp.Clear();
+
+            int row = 7;
+            int col = 0;
+
+            int upperRowBox = row - (row % 3);
+            int leftColBox = col - (col % 3);
 
             for (int y = 0; y < 9; y++)
             {
@@ -138,7 +144,7 @@ namespace Sudoku
                 }
             }
 
-              
+
 
 
 
@@ -167,7 +173,7 @@ namespace Sudoku
         {
             throw new NotImplementedException();
 
-            //Create list of all possible digits (1-9)0
+            //Create list of all possible digits (1-9)
 
             //Remove from the list all elements in the row
 
@@ -183,7 +189,7 @@ namespace Sudoku
         /// </summary>
         public void PrintBoard()
         {
-            Console.WriteLine("Y  1  2  3   4  5  6   7  8  9");
+            Console.WriteLine("Y  0  1  2   3  4  5   6  7  8");
             Console.WriteLine("X  ---------------------------");
             for (int row = 0; row < 9; row++)
             {
@@ -191,7 +197,7 @@ namespace Sudoku
                 {
                     Console.WriteLine("  ---------+---------+---------");
                 }
-                Console.Write(row + 1 + "|");
+                Console.Write(row + "|");
                 for(int col = 0; col < 9; col++)
                 {
                     if (col % 3 == 0 && col != 0)
