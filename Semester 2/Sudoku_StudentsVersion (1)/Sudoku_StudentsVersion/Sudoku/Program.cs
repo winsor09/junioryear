@@ -190,14 +190,17 @@ namespace Sudoku
 
                 newww = boards.Dequeue();
                 //if the returned value is complete
-                if (true)
+                if (newww.VerifyBoard())
                 {
                     //apply board to our ref parameter and return true
-
+                    board = newww;
+                    return true;
                 }
                         
                     //Find the first blank space "0" on the board
+
                         //FindLegalDigits() on that space
+
                             //Enqueue a new board for each legal digit found (make sure to put that digit on the new board!)
             }
                 
