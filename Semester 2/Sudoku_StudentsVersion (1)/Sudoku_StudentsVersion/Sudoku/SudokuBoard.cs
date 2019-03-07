@@ -68,7 +68,7 @@ namespace Sudoku
         /// </returns>
         public bool VerifyBoard()
         {
-            return true;
+
             List<int> temp = new List<int>();
             //Check all columns in the board, make sure they contain ONLY values 1-9. No duplicates, no exclusions
             for (int x = 0; x < 9; x++)
@@ -88,6 +88,9 @@ namespace Sudoku
                         return false;
                     }
                 }
+
+                temp.Clear();
+
             }
 
 
@@ -95,7 +98,6 @@ namespace Sudoku
 
             //Check all rows in the board, make sure they contain ONLY values 1-9. No duplicates, no exclusions
 
-            temp.Clear();
 
             for (int y = 0; y < 9; y++)
             {
@@ -114,39 +116,42 @@ namespace Sudoku
                         return false;
                     }
                 }
+                temp.Clear();
             }
             //Check all boxes in the board, make sure they contain ONLY values 1-9. No duplicates, no exclusions
-            ////////////////wrong///////////////////////`
-            temp.Clear();
 
-            int row = 7;
-            int col = 0;
 
-            int upperRowBox = row - (row % 3);
-            int leftColBox = col - (col % 3);
 
-            for (int y = 0; y < 9; y++)
+
+            for (int x = 0; x < 9; x += 3)
             {
-                for (int x = 0; x < 3; x++)
+                for (int y = 0; y < 9; y += 3)
                 {
-
-                    temp.Add(Board[x, y]);
-
-                }
-
-                temp = temp.OrderBy(t => t).ToList();
-                for (int i = 0; i < 9; i++)
-                {
-                    if (temp[i] != i + 1)
+                    for (int sx = x - (x % 3); sx < x - (x % 3) + 3; sx++)
                     {
-                        return false;
+                        for (int sy = y - (y % 3); sy < y - (y % 3) + 3; sy++)
+                        {
+                            temp.Add(Board[sx, sy]);
+                        }
+
+
                     }
+
+                    temp = temp.OrderBy(t => t).ToList();
+                    for (int i = 0; i < 9; i++)
+                    {
+                        if (temp[i] != i + 1)
+                        {
+                            return false;
+                        }
+                    }
+
+                    temp.Clear();
                 }
+
             }
 
-
-
-
+            return true;
 
         }
 
@@ -171,17 +176,38 @@ namespace Sudoku
         /// <returns>List of valid integers for the given row and column</returns>
         public List<int> FindLegalDigits(int row, int col)
         {
-            throw new NotImplementedException();
 
             //Create list of all possible digits (1-9)
-
+            List<int> correct = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             //Remove from the list all elements in the row
+            
+            for (int i = 0; i < 9; i++)
+            {
+                correct.Remove(Board[row, i]);
+            }
 
+            
             //Remove from the list all elements in the column
 
-            //remove from the list all elements in the box
+            for (int i = 0; i < 9; i++)
+            {
+                correct.Remove(Board[i, col]);
+            }
 
+
+
+            //remove from the list all elements in the box
+            for (int sx = row - (row % 3); sx < row - (row % 3) + 3; sx++)
+            {
+                for (int sy = col - (col % 3); sy < col - (col % 3) + 3; sy++)
+                {
+                    correct.Remove(Board[sx, sy]);
+                }
+
+
+            }
             //return the list
+            return correct;
         }
 
         /// <summary>
@@ -198,7 +224,7 @@ namespace Sudoku
                     Console.WriteLine("  ---------+---------+---------");
                 }
                 Console.Write(row + "|");
-                for(int col = 0; col < 9; col++)
+                for (int col = 0; col < 9; col++)
                 {
                     if (col % 3 == 0 && col != 0)
                     {
