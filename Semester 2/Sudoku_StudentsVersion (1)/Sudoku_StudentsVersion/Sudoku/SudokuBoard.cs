@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
 
 namespace Sudoku
 {
@@ -17,7 +19,7 @@ namespace Sudoku
         /// <summary>
         /// The data structure used to hold board data.
         /// </summary>
-        public int[,] Board { get; set; }
+        public int[,] Board { get; set; } = new int[9, 9];
 
         /// <summary>
         /// Defualt constructor for a sudokuboard. Randomly generates solvable boards.
@@ -48,7 +50,39 @@ namespace Sudoku
         /// <param name="fileName">Name of the file you want to load</param>
         public SudokuBoard(string fileName)
         {
-            throw new NotImplementedException();
+            string text = fileName;
+
+            Random rand = new Random();
+            string result;
+            List<string> file = new List<string>();
+            using (StreamReader sr = new StreamReader(text))
+            {
+                result = sr.ReadLine();
+
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+
+                    file.Add(line);
+
+                }
+            }
+            int index = 0;
+            string newfile = file[rand.Next(0, file.Count)];
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    Board[i, j] = int.Parse(newfile[index].ToString());
+                    index++;
+                }
+            }
+        }
+
+
+        public SudokuBoard(SudokuBoard curBoard)
+        {
+            Array.Copy(curBoard.Board, this.Board, this.Board.Length);
         }
 
 

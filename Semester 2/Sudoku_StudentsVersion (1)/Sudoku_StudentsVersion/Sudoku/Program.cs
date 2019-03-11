@@ -11,7 +11,7 @@ namespace Sudoku
         static void Main(string[] args)
         {
             int userInput = 0;
-            SudokuBoard board = new SudokuBoard();
+            SudokuBoard board = new SudokuBoard(AppDomain.CurrentDomain.BaseDirectory + "\\HardPuzzles.txt");
             do
             {
                 board.PrintBoard();
@@ -181,6 +181,8 @@ namespace Sudoku
         {
             Queue<SudokuBoard> boards = new Queue<SudokuBoard>();
             SudokuBoard newww = new SudokuBoard();
+            boards.Enqueue(board);
+
 
 
             //As long as there is a board in the queue, do the following:
@@ -196,14 +198,40 @@ namespace Sudoku
                     board = newww;
                     return true;
                 }
-                        
-                    //Find the first blank space "0" on the board
-
-                        //FindLegalDigits() on that space
+                bool isgood = false;
+                //Find the first blank space "0" on the board
+                for (int x = 0; x < 9; x++)
+                {
+                    for (int y = 0; y < 9; y++)
+                    {
+                        if (newww.Board[x, y] == 0)
+                        {
+                            //FindLegalDigits() on that space
+                            List<int> legal_digits = newww.FindLegalDigits(x, y);
 
                             //Enqueue a new board for each legal digit found (make sure to put that digit on the new board!)
+                            if (isgood == false)
+                            {
+                                for (int i = 0; i < legal_digits.Count; i++)
+                                {
+                                    SudokuBoard copy = new SudokuBoard(newww);
+                                    copy.Board[x, y] = legal_digits[i];
+
+                                    boards.Enqueue(copy);
+                                }
+                                isgood = true;
+                            }
+
+                        }
+
+                    }
+
+                }
+
+
             }
-                
+
+            return false;
         }
     }
 }
