@@ -13,7 +13,7 @@ namespace Problem3
         {
 
             string text = @"C:\Users\202092\Desktop\CodeQuest\CodeQuest\Prob03.in.txt";
-
+            
             string result;
             List<string> file = new List<string>();
             using (StreamReader sr = new StreamReader(text))
